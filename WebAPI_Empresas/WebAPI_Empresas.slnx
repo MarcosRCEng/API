@@ -1,16 +1,2 @@
 <Solution>
-  <Folder Name="/src/">
-    <Project Path="src/WebAPI_Empresas.Api/WebAPI_Empresas.Api.csproj" />
-    <Project Path="src/WebAPI_Empresas.Application/WebAPI_Empresas.Application.csproj" />
-    <Project Path="src/WebAPI_Empresas.CnpjRegistry.Api/WebAPI_Empresas.CnpjRegistry.Api.csproj" />
-    <Project Path="src/WebAPI_Empresas.CnpjRegistry.Application/WebAPI_Empresas.CnpjRegistry.Application.csproj" />
-    <Project Path="src/WebAPI_Empresas.CnpjRegistry.Domain/WebAPI_Empresas.CnpjRegistry.Domain.csproj" />
-    <Project Path="src/WebAPI_Empresas.CnpjRegistry.Infrastructure/WebAPI_Empresas.CnpjRegistry.Infrastructure.csproj" />
-    <Project Path="src/WebAPI_Empresas.Domain/WebAPI_Empresas.Domain.csproj" />
-    <Project Path="src/WebAPI_Empresas.Infrastructure/WebAPI_Empresas.Infrastructure.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/WebAPI_Empresas.CnpjRegistry.Tests/WebAPI_Empresas.CnpjRegistry.Tests.csproj" />
-    <Project Path="tests/WebAPI_Empresas.Tests/WebAPI_Empresas.Tests.csproj" />
-  </Folder>
 </Solution>
