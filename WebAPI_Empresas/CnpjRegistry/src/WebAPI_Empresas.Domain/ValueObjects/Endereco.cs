@@ -1,26 +1,39 @@
-﻿namespace WebAPI_Empresas.Domain.ValueObjects
+namespace WebAPI_Empresas.Domain.ValueObjects
 {
     public class Endereco
     {
-        public string Logradouro { get; private set; } = string.Empty;
-        public string Numero { get; private set; } = string.Empty;
-        public string Complemento { get; private set; } = string.Empty;
-        public string Bairro { get; private set; } = string.Empty;
-        public string Municipio { get; private set; } = string.Empty;
-        public string Uf { get; private set; } = string.Empty;
-        public string Cep { get; private set; } = string.Empty;
+        public string Logradouro { get; private set; } = null!;
+        public string Numero { get; private set; } = null!;
+        public string Complemento { get; private set; } = null!;
+        public string Cep { get; private set; } = null!;
+        public string Bairro { get; private set; } = null!;
+        public string Municipio { get; private set; } = null!;
+        public string Uf { get; private set; } = null!;
+        public string Telefone { get; private set; } = null!;
+        public string Email { get; private set; } = null!;
 
         protected Endereco() { }
 
-        public Endereco(string logradouro, string numero, string complemento, string bairro, string municipio, string uf, string cep)
+        public Endereco(
+            string logradouro,
+            string numero,
+            string complemento,
+            string cep,
+            string bairro,
+            string municipio,
+            string uf,
+            string telefone,
+            string email)
         {
-            Logradouro = logradouro ?? string.Empty;
-            Numero = numero ?? string.Empty;
-            Complemento = complemento ?? string.Empty;
-            Bairro = bairro ?? string.Empty;
-            Municipio = municipio ?? string.Empty;
-            Uf = uf ?? string.Empty;
-            Cep = cep ?? string.Empty;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Cep = cep;
+            Bairro = bairro;
+            Municipio = municipio;
+            Uf = uf;
+            Telefone = telefone;
+            Email = email;
         }
     }
 }

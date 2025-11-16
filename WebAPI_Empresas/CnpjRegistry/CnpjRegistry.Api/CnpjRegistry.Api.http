@@ -1,0 +1,6 @@
+@CnpjRegistry.Api_HostAddress = http://localhost:5261
+
+GET {{CnpjRegistry.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

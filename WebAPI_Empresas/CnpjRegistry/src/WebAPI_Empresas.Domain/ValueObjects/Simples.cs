@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebAPI_Empresas.Domain.ValueObjects
 {

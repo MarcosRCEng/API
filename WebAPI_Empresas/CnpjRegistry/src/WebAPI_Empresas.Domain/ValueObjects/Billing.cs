@@ -1,4 +1,4 @@
-﻿namespace WebAPI_Empresas.Domain.ValueObjects
+namespace WebAPI_Empresas.Domain.ValueObjects
 {
     public class Billing
     {
