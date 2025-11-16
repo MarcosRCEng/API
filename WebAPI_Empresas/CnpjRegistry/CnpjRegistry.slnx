@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CnpjRegistry.Api/CnpjRegistry.Api.csproj" />
+  <Project Path="CnpjRegistry.Application/CnpjRegistry.Application.csproj" />
+  <Project Path="CnpjRegistry.Domain/CnpjRegistry.Domain.csproj" />
+  <Project Path="CnpjRegistry.Infrastructure/CnpjRegistry.Infrastructure.csproj" />
+  <Project Path="CnpjRegistry.Tests/CnpjRegistry.Tests.csproj" />
+</Solution>

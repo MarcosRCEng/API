@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using WebAPI_Empresas.Domain.ValueObjects;
 
@@ -7,101 +7,133 @@ namespace WebAPI_Empresas.Domain.Entities
     public class Empresa
     {
         public Guid Id { get; private set; }
-        public Cnpj Cnpj { get; private set; } = new Cnpj();
-        public string Tipo { get; private set; } = string.Empty;
+        public string Cnpj { get; private set; } = null!;
+        public string Tipo { get; private set; } = null!;
         public DateTime? Abertura { get; private set; }
-        public string Nome { get; private set; } = string.Empty;
-        public string Fantasia { get; private set; } = string.Empty;
-        public string Porte { get; private set; } = string.Empty;
-        public string NaturezaJuridica { get; private set; } = string.Empty;
+        public string Nome { get; private set; } = null!;
+        public string? Fantasia { get; private set; }
+        public string? Situacao { get; private set; }
+        public string? Status { get; private set; }
+        public DateTime? UltimaAtualizacao { get; private set; }
 
-        // Address is owned
+        // Value objects / owned
         public Endereco? Endereco { get; private set; }
-
-        // Activities
         public AtividadePrincipal? AtividadePrincipal { get; private set; }
+
+        // Collections
         private readonly List<AtividadeSecundaria> _atividadesSecundarias = new();
         public IReadOnlyCollection<AtividadeSecundaria> AtividadesSecundarias => _atividadesSecundarias.AsReadOnly();
 
-        // QSA
         private readonly List<Qsa> _qsa = new();
         public IReadOnlyCollection<Qsa> Qsa => _qsa.AsReadOnly();
 
-        public string Municipio { get; private set; } = string.Empty;
-        public string Bairro { get; private set; } = string.Empty;
-        public string Uf { get; private set; } = string.Empty;
-        public string Cep { get; private set; } = string.Empty;
-        public string Email { get; private set; } = string.Empty;
-        public string Telefone { get; private set; } = string.Empty;
-
-        public DateTime? DataSituacao { get; private set; }
-        public DateTime? UltimaAtualizacao { get; private set; }
-        public string Status { get; private set; } = string.Empty;
-        public string Efr { get; private set; } = string.Empty;
-        public string MotivoSituacao { get; private set; } = string.Empty;
-        public string SituacaoEspecial { get; private set; } = string.Empty;
-        public DateTime? DataSituacaoEspecial { get; private set; }
-        public decimal? CapitalSocial { get; private set; }
-
         public Simples? Simples { get; private set; }
         public Simei? Simei { get; private set; }
-        public Extra? Extra { get; private set; }
         public Billing? Billing { get; private set; }
+        public Extra? Extra { get; private set; }
 
         protected Empresa() { }
 
-        public Empresa(Cnpj cnpj, string tipo, DateTime? abertura, string nome)
+        public Empresa(string cnpj, string tipo, DateTime? abertura, string nome)
         {
             Id = Guid.NewGuid();
             Cnpj = cnpj;
-            Tipo = tipo ?? string.Empty;
+            Tipo = tipo;
             Abertura = abertura;
-            Nome = nome ?? string.Empty;
+            Nome = nome;
             UltimaAtualizacao = DateTime.UtcNow;
         }
 
-        // Updaters
-        public void SetFantasia(string? fantasia) { Fantasia = fantasia ?? string.Empty; Touch(); }
-        public void SetPorte(string? porte) { Porte = porte ?? string.Empty; Touch(); }
-        public void SetNaturezaJuridica(string? nat) { NaturezaJuridica = nat ?? string.Empty; Touch(); }
-
-        public void SetEndereco(Endereco endereco) { Endereco = endereco; Touch(); }
-        public void SetAtividadePrincipal(AtividadePrincipal atividade) { AtividadePrincipal = atividade; Touch(); }
-        public void AddAtividadeSecundaria(AtividadeSecundaria a) { if (a!=null) _atividadesSecundarias.Add(a); Touch(); }
-        public void ClearAtividadesSecundarias() { _atividadesSecundarias.Clear(); Touch(); }
-
-        public void AddQsa(Qsa socio) { if (socio!=null) _qsa.Add(socio); Touch(); }
-        public void ClearQsa() { _qsa.Clear(); Touch(); }
-
-        public void SetContato(string municipio, string bairro, string uf, string cep, string email, string telefone)
+        // Updaters / Factory-like behavior
+        public void SetFantasia(string? fantasia)
         {
-            Municipio = municipio ?? string.Empty;
-            Bairro = bairro ?? string.Empty;
-            Uf = uf ?? string.Empty;
-            Cep = cep ?? string.Empty;
-            Email = email ?? string.Empty;
-            Telefone = telefone ?? string.Empty;
+            Fantasia = fantasia;
             Touch();
         }
 
-        public void SetSituacao(DateTime? dataSituacao, string status)
+        public void SetSituacao(string? situacao)
         {
-            DataSituacao = dataSituacao;
-            Status = status ?? string.Empty;
+            Situacao = situacao;
             Touch();
         }
 
-        public void SetFinanceiro(decimal? capitalSocial)
+        public void SetStatus(string? status)
         {
-            CapitalSocial = capitalSocial;
+            Status = status;
             Touch();
         }
 
-        public void SetSimples(Simples simples) { Simples = simples; Touch(); }
-        public void SetSimei(Simei simei) { Simei = simei; Touch(); }
-        public void SetExtra(Extra extra) { Extra = extra; Touch(); }
-        public void SetBilling(Billing billing) { Billing = billing; Touch(); }
+        public void SetUltimaAtualizacao(DateTime? dt)
+        {
+            UltimaAtualizacao = dt;
+            Touch();
+        }
 
-        private void Touch() => UltimaAtualizacao = DateTime.UtcNow;
+        public void SetEndereco(Endereco endereco)
+        {
+            Endereco = endereco;
+            Touch();
+        }
+
+        public void SetAtividadePrincipal(AtividadePrincipal atividade)
+        {
+            AtividadePrincipal = atividade;
+            Touch();
+        }
+
+        public void AddAtividadeSecundaria(AtividadeSecundaria atividade)
+        {
+            if (atividade == null) return;
+            _atividadesSecundarias.Add(atividade);
+            Touch();
+        }
+
+        public void ClearAtividadesSecundarias()
+        {
+            _atividadesSecundarias.Clear();
+            Touch();
+        }
+
+        public void AddQsa(Qsa socio)
+        {
+            if (socio == null) return;
+            _qsa.Add(socio);
+            Touch();
+        }
+
+        public void ClearQsa()
+        {
+            _qsa.Clear();
+            Touch();
+        }
+
+        public void SetSimples(Simples simples)
+        {
+            Simples = simples;
+            Touch();
+        }
+
+        public void SetSimei(Simei s)
+        {
+            Simei = s;
+            Touch();
+        }
+
+        public void SetBilling(Billing billing)
+        {
+            Billing = billing;
+            Touch();
+        }
+
+        public void SetExtra(Extra extra)
+        {
+            Extra = extra;
+            Touch();
+        }
+
+        private void Touch()
+        {
+            UltimaAtualizacao = DateTime.UtcNow;
+        }
     }
 }

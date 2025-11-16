@@ -1,17 +1,20 @@
-﻿namespace WebAPI_Empresas.Domain.Entities
+using System;
+
+namespace WebAPI_Empresas.Domain.Entities
 {
     public class AtividadeSecundaria
     {
-        public int Id { get; private set; }
-        public string Code { get; private set; } = string.Empty;
-        public string Text { get; private set; } = string.Empty;
+        public Guid Id { get; private set; }
+        public string Code { get; private set; } = null!;
+        public string Text { get; private set; } = null!;
 
         protected AtividadeSecundaria() { }
 
         public AtividadeSecundaria(string code, string text)
         {
-            Code = code ?? string.Empty;
-            Text = text ?? string.Empty;
+            Id = Guid.NewGuid();
+            Code = code;
+            Text = text;
         }
     }
 }
