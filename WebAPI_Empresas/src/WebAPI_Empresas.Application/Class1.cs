@@ -1,4 +1,4 @@
-﻿namespace WebAPI_Empresas.Application;
+namespace WebAPI_Empresas.Application;
 
 public class Class1
 {
