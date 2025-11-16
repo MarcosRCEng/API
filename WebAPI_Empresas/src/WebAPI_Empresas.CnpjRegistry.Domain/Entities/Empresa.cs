@@ -1,4 +1,4 @@
-namespace CnpjRegistry.Domain.Entities
+﻿namespace WebAPI_Empresas.CnpjRegistry.Domain_Empresas.CnpjRegistry.Domain_Empresas.CnpjRegistry.Domain.Entities
 {
     public class Empresa
     {
@@ -16,3 +16,7 @@ namespace CnpjRegistry.Domain.Entities
         }
     }
 }
+
+
+
+

@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using CnpjRegistry.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI_Empresas.CnpjRegistry.Domain.Entities;
 
-namespace CnpjRegistry.Infrastructure.Context
+namespace WebAPI_Empresas.CnpjRegistry.Infrastructure_Empresas.CnpjRegistry.Infrastructure_Empresas.CnpjRegistry.Infrastructure.Context
 {
     public class AppDbContext : DbContext
     {
@@ -19,3 +19,7 @@ namespace CnpjRegistry.Infrastructure.Context
         }
     }
 }
+
+
+
+
